@@ -11,5 +11,9 @@ spec:
       containers:
       - name: slack-notification
         image: curlimages/curl
+        command: 
+          - "curl"
+          - "-kvv"
+          - "https://www.google.com/"
       restartPolicy: Never
   backoffLimit: 2
