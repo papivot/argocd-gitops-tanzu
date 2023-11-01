@@ -3,13 +3,13 @@ kind: Job
 metadata:
   generateName: app-tkc-creation-
   annotations:
-    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
       containers:
       - name: slack-notification
-        image: nginx:latest
+        image: curlimages/curl
       restartPolicy: Never
   backoffLimit: 2
