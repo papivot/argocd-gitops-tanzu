@@ -12,11 +12,10 @@ spec:
       - name: argocd-tkc-post
         image: whoami6443/argocd-hook:0.0.3
         command: 
-          - "sleep"
-          - "6000"
+          - "/script.sh"
         env:
         - name: KUBECTL_VSPHERE_PASSWORD
-          value: 'Passw0rd1'
+          value: 'Passw0rd!'
         - name: SUPER_USER
           value: "administrator@vsphere.local"
         - name: SUPER_IP
