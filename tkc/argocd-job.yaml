@@ -17,4 +17,6 @@ spec:
           - "sleep"
           - "240"
       restartPolicy: Never
+      serviceAccount: argocd-server
+      serviceAccountName: argocd-server
   backoffLimit: 2
