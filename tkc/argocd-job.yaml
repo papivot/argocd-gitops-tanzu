@@ -1,8 +1,6 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  namespace: argocd
-#  generateName: app-tkc-creation-
   generateName: app-tkc-creation-
   annotations:
     argocd.argoproj.io/hook: PostSync
@@ -12,11 +10,24 @@ spec:
     spec:
       containers:
       - name: argocd-tkc-post
-        image: whoami6443/argocd-hook:0.0.2
+        image: whoami6443/argocd-hook:0.0.3
         command: 
           - "sleep"
           - "6000"
+        env:
+        - name: KUBECTL_VSPHERE_PASSWORD
+          value: 'Passw0rd1'
+        - name: SUPER_USER
+          value: "administrator@vsphere.local"
+        - name: SUPER_IP
+          value: "192.168.11.66"
+        - name: SUPER_NS
+          value: "demo1"
+        - name: TKC_NAME
+          value: "workload-vsphere-tkg1"
+        - name: ARGO_USER
+          value: "admin"
+        - name: ARGO_PASSWORD
+          value: "Passw0rd!"
       restartPolicy: Never
-      serviceAccount: argocd-server
-      serviceAccountName: argocd-server
   backoffLimit: 2
