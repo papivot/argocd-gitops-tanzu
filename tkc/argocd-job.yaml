@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
 #  generateName: app-tkc-creation-
-  name: app-tkc-creation
+  generateName: app-tkc-creation-
   annotations:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
@@ -10,11 +10,10 @@ spec:
   template:
     spec:
       containers:
-      - name: slack-notification
-        image: curlimages/curl
+      - name: argocd-tkc-post
+        image: whoami6443/argocd-hook:0.0.1
         command: 
-          - "curl"
-          - "-kvv"
-          - "https://192.168.1.1/"
+          - "sleep"
+          - "240"
       restartPolicy: Never
   backoffLimit: 2
