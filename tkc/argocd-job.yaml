@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: argocd-tkc-post
-        image: whoami6443/argocd-hook:0.0.3
+        image: whoami6443/argocd-hook:0.0.4
         command: 
           - "/script.sh"
         env:
