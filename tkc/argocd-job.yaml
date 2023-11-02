@@ -1,6 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  namespace: argocd
 #  generateName: app-tkc-creation-
   generateName: app-tkc-creation-
   annotations:
