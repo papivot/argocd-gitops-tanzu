@@ -102,9 +102,3 @@ spec:
           mountPath: "/var/lib/kubelet"
           name: kubelet
           storageClass: tanzu
-#        Not supported
-#        - capacity:
-#            storage: "4Gi"
-#          mountPath: "/var/lib/etcd"
-#          name: etcd
-#          storageClass: tanzu
