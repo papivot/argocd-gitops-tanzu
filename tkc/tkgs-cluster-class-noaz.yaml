@@ -6,9 +6,9 @@ metadata:
 spec:
   clusterNetwork:
     services:
-      cidrBlocks: ["192.168.32.0/20"]
+      cidrBlocks: ["10.168.32.0/20"]
     pods:
-      cidrBlocks: ["192.168.0.0/20"]
+      cidrBlocks: ["10.168.0.0/20"]
     serviceDomain: "cluster.local"
   topology:
     class: tanzukubernetescluster
