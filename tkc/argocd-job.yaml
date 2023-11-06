@@ -10,16 +10,24 @@ spec:
     spec:
       containers:
       - name: argocd-tkc-post
-        image: whoami6443/argocd-hook:0.1.1
+        image: whoami6443/argocd-hook:0.1.2
         command: 
           - "/script.sh"
+        imagePullPolicy: IfNotPresent
         env:
         - name: TKC_NAME
           value: "workload-vsphere-tkg1"
-        - name: TKC_ADDON_GIT
-          value: "https://github.com/papivot/argocd-gitops-tanzu.git"
-        - name: TKC_ADDON_GIT_FOLDER
-          value: "tkc-addons"
+#        - name: TKC_ADDON_GIT
+#          value: "https://github.com/papivot/argocd-gitops-tanzu.git"
+#        - name: TKC_ADDON_GIT_FOLDER
+#          value: "tkc-addons"
+        volumeMounts:
+        - name: configmap-volume
+          mountPath: /template
+      volumes:
+      - name: configmap-volume
+        configMap:
+          name: argocd-app-configmap-workload-vsphere-tkg1
       restartPolicy: Never
       serviceAccountName: argocd-hook
   backoffLimit: 2

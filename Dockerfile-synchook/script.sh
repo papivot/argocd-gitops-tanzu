@@ -19,7 +19,7 @@ export USER_KEY=${CLIENT_KEY}
 
 # Generate the secret file
 envsubst < argocd-secret.template.yaml > argocd-secret.yaml
-envsubst < argocd-tkc-addons.template.yaml > argocd-tkc-addons.yaml
+envsubst < /template/argocd-tkc-addons.template.yaml > argocd-tkc-addons.yaml
 
 # Wait for the workload cluster API EP to be fully operational
 while ! kubectl version -o json --kubeconfig tkc-kubeconfig > /dev/null; do
@@ -29,4 +29,4 @@ done
 
 kubectl apply -f argocd-secret.yaml -n "${TKC_NAMESPACE}"
 sleep 5
-#kubectl apply -f argocd-tkc-addons.yaml -n "${TKC_NAMESPACE}"
+kubectl apply -f argocd-tkc-addons.yaml -n "${TKC_NAMESPACE}"

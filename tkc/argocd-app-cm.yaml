@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-app-configmap-workload-vsphere-tkg1
+data:
+  argocd-tkc-addons.template.yaml: |
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: tkc-addons-${CLUSTER_NAME}-certmanager
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/papivot/argocd-gitops-tanzu.git"
+        path: cert-manager
+        targetRevision: HEAD
+        directory:
+          recurse: true
+      destination:
+        server: ${CLUSTER_IP}
+      syncPolicy:
+        automated:
+          prune: true
+    ---
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: tkc-addons-${CLUSTER_NAME}-contour
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/papivot/argocd-gitops-tanzu.git"
+        path: contour
+        targetRevision: HEAD
+        directory:
+          recurse: true        
+      destination:
+        server: ${CLUSTER_IP}
+      syncPolicy:
+        automated:
+          prune: true
+    ---
+    # add more apps as needed

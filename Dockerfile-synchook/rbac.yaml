@@ -12,6 +12,9 @@ rules:
   - apiGroups: [""]
     resources: ["secrets"]
     verbs: ["create", "update", "patch", "delete"]
+  - apiGroups: ["argoproj.io"]
+    resources: ["applications"]
+    verbs: ["create", "update", "patch", "delete"]
   - apiGroups:
     - '*'
     resources:
