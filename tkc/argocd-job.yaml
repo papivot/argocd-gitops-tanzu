@@ -17,4 +17,5 @@ spec:
         - name: TKC_NAME
           value: "workload-vsphere-tkg1"
       restartPolicy: Never
+      serviceAccountName: argocd-hook
   backoffLimit: 2
