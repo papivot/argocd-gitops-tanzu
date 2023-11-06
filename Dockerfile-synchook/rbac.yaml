@@ -1,3 +1,4 @@
+# This needs to be executed in the same Namespace where the ARGOCD is installed. 
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -29,5 +30,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: argocd-hook
-# Chnage this to the target namespace
+# Change this to the target namespace
   namespace: demo1
