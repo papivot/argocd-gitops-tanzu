@@ -10,11 +10,37 @@ spec:
     spec:
       containers:
       - name: argocd-tkc-post
+<<<<<<< HEAD
+<<<<<<< HEAD
         image: whoami6443/argocd-hook:0.0.8
+=======
+        image: whoami6443/argocd-hook:0.0.4
+>>>>>>> d053c25f154888cc512e15bdaeb728e568ab67eb
+=======
+        image: whoami6443/argocd-hook:0.0.8
+>>>>>>> 146545f3f7d4252443b35c15e32a14e0eed57466
         command: 
           - "/script.sh"
         env:
+<<<<<<< HEAD
+#        - name: KUBECTL_VSPHERE_PASSWORD
+#          value: 'Passw0rd!'
+#        - name: SUPER_USER
+#          value: "administrator@vsphere.local"
+#        - name: SUPER_IP
+#          value: "192.168.11.66"
+#        - name: SUPER_NS
+#          value: "demo1"
+=======
+>>>>>>> 146545f3f7d4252443b35c15e32a14e0eed57466
         - name: TKC_NAME
           value: "workload-vsphere-tkg1"
+<<<<<<< HEAD
+#        - name: ARGO_USER
+#          value: "admin"
+#        - name: ARGO_PASSWORD
+#          value: "Passw0rd!"
+=======
+>>>>>>> 146545f3f7d4252443b35c15e32a14e0eed57466
       restartPolicy: Never
   backoffLimit: 2
