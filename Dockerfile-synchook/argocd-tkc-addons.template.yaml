@@ -5,8 +5,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/papivot/argocd-gitops-tanzu.git'
-    path: tkc-addons
+    repoURL: ${TKC_ADDON_GIT}
+    path: ${TKC_ADDON_GIT_FOLDER}
     targetRevision: HEAD
     directory:
       recurse: true
