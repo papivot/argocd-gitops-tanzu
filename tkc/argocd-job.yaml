@@ -14,19 +14,7 @@ spec:
         command: 
           - "/script.sh"
         env:
-#        - name: KUBECTL_VSPHERE_PASSWORD
-#          value: 'Passw0rd!'
-#        - name: SUPER_USER
-#          value: "administrator@vsphere.local"
-#        - name: SUPER_IP
-#          value: "192.168.11.66"
-#        - name: SUPER_NS
-#          value: "demo1"
         - name: TKC_NAME
           value: "workload-vsphere-tkg1"
-#        - name: ARGO_USER
-#          value: "admin"
-#        - name: ARGO_PASSWORD
-#          value: "Passw0rd!"
       restartPolicy: Never
   backoffLimit: 2
