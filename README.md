@@ -1,5 +1,8 @@
 # GitOps on vSphere with Tanzu leveraging ArgoCD
 
+*NOTE* - This has been tested on vCenter 8.0u2. Supervisor version 1.26.
+
+
 * In this example, we will be using the vSphere Namespace (pre-created from vCenter) called `demo1`. Users can change the reference as needed. 
 * We will be deploying ArgoCD in the `demo` vSphere Namespace. 
 * Using ArgoCD, we will deploy a Classy Cluster `workload-vsphere-tkg1`.
