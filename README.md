@@ -11,10 +11,11 @@
 
 ## ArgoCD installation (to be executed on the Supervisor Control Plane VM)
 ```bash
-tdnf wget
+tdnf install wget
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 vi install.yaml # There are two ClusterRoleBindings with reference to "namespace: argocd". Change them to "namespace: demo1" and save the file. 
 kubectl apply -f install.yaml -n demo1
+# The above command may not work as its pulling image from dockerhub and end up with rate limiting issues. 
 
 # Expose the argocd-server service as type LoadBalancer and get the IP address of the UI service. 
 # This can be later modified to expose the service as type Ingress or HttpProxy
