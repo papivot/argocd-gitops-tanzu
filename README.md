@@ -23,13 +23,17 @@ kubectl apply -f install.yaml -n demo1
 # This can be later modified to expose the service as type Ingress or HttpProxy
 kubectl patch svc argocd-server -n demo1 -p '{"spec": {"type": "LoadBalancer"}}'
 kubectl get svc argocd-server -n demo1 -o json|jq -r '.status.loadBalancer.ingress[0].ip'
+
+# We need to modify the RBAC on the ARGOCD NS to add new clusters and applications dynamically. 
+wget https://raw.githubusercontent.com/papivot/argocd-gitops-tanzu/main/Dockerfile-synchook/rbac.yaml
+kubectl apply -f rbac.yaml -n demo1
 ```
 
 ## Login to ArgoCD for the first time
 ```bash
 # Download the relevent ArgoCD CLI
 
-# Login to the Supervisor
+# Login to the Supervisor API
 kubectl vsphere login --insecure-skip-tls-verify --server {{SUPERVISOR IPADDRESS}} -u administrator@vsphere.local
 # Update the kubeconfig context to the {{SUPERVISOR IPADDRESS}}
 argocd admin initial-password -n demo1
