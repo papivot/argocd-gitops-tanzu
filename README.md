@@ -15,7 +15,9 @@ tdnf install wget
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 vi install.yaml # There are two ClusterRoleBindings with reference to "namespace: argocd". Change them to "namespace: demo1" and save the file. 
 kubectl apply -f install.yaml -n demo1
-# The above command may not work as its pulling image from dockerhub and end up with rate limiting issues. 
+# The above command may not work as its pulling image from dockerhub and end up with rate limiting issues. If so perform the next two commands - 
+# kubectl create secret docker-registry regcred  --docker-username="{{DOCKERHUB USERNAME}}" --docker-password='{{DOCKERHUB PASSWORD}}' --docker-email={{DOCKERHUB EMAIL}} -n demo1
+# kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "regcred"}]}'
 
 # Expose the argocd-server service as type LoadBalancer and get the IP address of the UI service. 
 # This can be later modified to expose the service as type Ingress or HttpProxy
@@ -29,6 +31,7 @@ kubectl get svc argocd-server -n demo1 -o json|jq -r '.status.loadBalancer.ingre
 
 # Login to the Supervisor
 kubectl vsphere login --insecure-skip-tls-verify --server {{SUPERVISOR IPADDRESS}} -u administrator@vsphere.local
+# Update the kubeconfig context to the {{SUPERVISOR IPADDRESS}}
 argocd admin initial-password -n demo1
 argocd login {{IPADDRESS OF ARGOCD SERVER}}
 argocd account update-password
