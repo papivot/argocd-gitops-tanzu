@@ -1,4 +1,7 @@
 # This needs to be executed in the same Namespace where the ARGOCD is installed. 
+#############################
+# Do not modify this file, except for the last line
+#############################
 apiVersion: v1
 kind: ServiceAccount
 metadata:

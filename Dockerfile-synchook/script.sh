@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#############################
+# Do not modify this file
+#############################
+
 TKC_NAMESPACE=$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace)
 kubectl get secret -n "${TKC_NAMESPACE}" "${TKC_NAME}"-kubeconfig -o json|jq -r ".data.value"|base64 -d > tkc-kubeconfig
 

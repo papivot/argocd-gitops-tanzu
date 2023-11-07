@@ -1,3 +1,5 @@
+# Modify the TKC_NAME value as per the requirements
+# Modify the configmap-volume configMap name to the appropriate value
 apiVersion: batch/v1
 kind: Job
 metadata:
