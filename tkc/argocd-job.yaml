@@ -17,10 +17,6 @@ spec:
         env:
         - name: TKC_NAME
           value: "workload-vsphere-tkg1"
-#        - name: TKC_ADDON_GIT
-#          value: "https://github.com/papivot/argocd-gitops-tanzu.git"
-#        - name: TKC_ADDON_GIT_FOLDER
-#          value: "tkc-addons"
         volumeMounts:
         - name: configmap-volume
           mountPath: /template

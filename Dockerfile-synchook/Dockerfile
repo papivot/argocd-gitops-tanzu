@@ -11,7 +11,7 @@ ADD https://github.com/mikefarah/yq/releases/download/v4.35.2/yq_linux_amd64 /us
 
 COPY script.sh /
 COPY argocd-secret.template.yaml /
-COPY argocd-tkc-addons.template.yaml /
+# COPY argocd-tkc-addons.template.yaml /
 
 RUN chmod 755 /script.sh \
     && chmod +x /usr/local/bin/yq
