@@ -4,13 +4,13 @@ metadata:
   generateName: app-tkc-creation-
   annotations:
     argocd.argoproj.io/hook: PostSync
-#    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
   template:
     spec:
       containers:
       - name: argocd-tkc-post
-        image: whoami6443/argocd-hook:0.1.2
+        image: whoami6443/argocd-hook:0.1.3
         command: 
           - "/script.sh"
         imagePullPolicy: IfNotPresent
