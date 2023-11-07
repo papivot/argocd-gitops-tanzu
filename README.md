@@ -8,6 +8,7 @@
 
 ## ArgoCD installation (to be executed on the Supervisor Control Plane VM)
 ```bash
+tdnf wget
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 vi install.yaml # There are two ClusterRoleBindings with reference to "namespace: argocd". Change them to "namespace: demo1" and save the file. 
 kubectl apply -f install.yaml -n demo1

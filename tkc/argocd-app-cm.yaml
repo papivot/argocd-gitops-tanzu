@@ -1,3 +1,4 @@
+# These are all the ArgoCD applocations that need to be executed on the workload cluster. Add/modify as needed. Change the name of the CM as needed
 apiVersion: v1
 kind: ConfigMap
 metadata:

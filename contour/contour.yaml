@@ -1,3 +1,6 @@
+# wget https://projectcontour.io/quickstart/contour.yaml
+#
+#
 # This file is generated from the individual YAML files by generate-deployment.sh. Do not
 # edit this file directly but instead edit the source files and re-render.
 #
