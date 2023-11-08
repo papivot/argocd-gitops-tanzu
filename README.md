@@ -4,29 +4,34 @@
 
 
 * In this example, we will be using the vSphere Namespace (pre-created from vCenter) called `demo1`. Users can change the reference as needed. 
-* We will be deploying ArgoCD in the `demo` vSphere Namespace. 
+* We will be deploying ArgoCD in the `demo1` vSphere Namespace. 
+* The storageClass call `tanzu` will be used for this demo.
 * Using ArgoCD, we will deploy a Classy Cluster `workload-vsphere-tkg1`.
 * Once the cluster deployment complete, the `PostSync` job hook within ArgoCD will add the new cluster to ArgoCD.
 * The job will then install `cert-manager` and `contour` K8s addons to the workload cluster deployed in the previous step. 
 
 ## ArgoCD installation (to be executed on the Supervisor Control Plane VM)
+Note. This excersise is not to demonstrate how to install and configure ArgoCD. This could be done by leveraging Supervisor Services and its APIs. 
+
 ```bash
 tdnf install wget
+
+# We need to modify the RBAC on the ARGOCD NS to add new clusters and applications dynamically. 
+wget https://raw.githubusercontent.com/papivot/argocd-gitops-tanzu/main/Dockerfile-synchook/rbac.yaml
+kubectl apply -f rbac.yaml -n demo1
+
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 vi install.yaml # There are two ClusterRoleBindings with reference to "namespace: argocd". Change them to "namespace: demo1" and save the file. 
 kubectl apply -f install.yaml -n demo1
-# The above command may not work as its pulling image from dockerhub and end up with rate limiting issues. If so perform the next two commands - 
+# The above commands may not work as its pulling image from dockerhub and end up with rate limiting issues. If so perform the next two commands - 
 # kubectl create secret docker-registry regcred  --docker-username="{{DOCKERHUB USERNAME}}" --docker-password='{{DOCKERHUB PASSWORD}}' --docker-email={{DOCKERHUB EMAIL}} -n demo1
-# kubectl patch serviceaccount default -p '{"imagePullSecrets": [{"name": "regcred"}]}'
+# kubectl patch serviceaccount argocd-redis -p '{"imagePullSecrets": [{"name": "regcred"}]}'
+# kubectl patch serviceaccount argocd-hook  -p '{"imagePullSecrets": [{"name": "regcred"}]}'
 
 # Expose the argocd-server service as type LoadBalancer and get the IP address of the UI service. 
 # This can be later modified to expose the service as type Ingress or HttpProxy
 kubectl patch svc argocd-server -n demo1 -p '{"spec": {"type": "LoadBalancer"}}'
 kubectl get svc argocd-server -n demo1 -o json|jq -r '.status.loadBalancer.ingress[0].ip'
-
-# We need to modify the RBAC on the ARGOCD NS to add new clusters and applications dynamically. 
-wget https://raw.githubusercontent.com/papivot/argocd-gitops-tanzu/main/Dockerfile-synchook/rbac.yaml
-kubectl apply -f rbac.yaml -n demo1
 ```
 
 ## Login to ArgoCD for the first time
