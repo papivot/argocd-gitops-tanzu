@@ -27,5 +27,6 @@ spec:
         configMap:
           name: argocd-app-configmap-workload-vsphere-tkg1
       restartPolicy: Never
-      serviceAccountName: argocd-hook
+      serviceAccountName: demo1-argocd-argocd-application-controller
+     # serviceAccountName: argocd-hook
   backoffLimit: 2
