@@ -19,7 +19,8 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: cert-manager
-  label: pod-security.kubernetes.io/enforce=privileged
+  labels:
+    pod-security.kubernetes.io/enforce: privileged
 ---
 # Source: cert-manager/templates/crds.yaml
 apiVersion: apiextensions.k8s.io/v1
