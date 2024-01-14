@@ -35,6 +35,8 @@ data:
         targetRevision: HEAD
         directory:
           recurse: true        
+        kustomize:
+          - docker.io/envoyproxy/envoy=harbor.navneet.pro/proxy-cache/envoyproxy/envoy
       destination:
         server: ${CLUSTER_IP}
       syncPolicy:
