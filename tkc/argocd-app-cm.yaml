@@ -32,9 +32,7 @@ data:
       source:
         repoURL: "https://github.com/papivot/argocd-gitops-tanzu.git"
         path: contour
-        targetRevision: HEAD
-        directory:
-          recurse: true        
+        targetRevision: HEAD       
       destination:
         server: ${CLUSTER_IP}
       syncPolicy:
