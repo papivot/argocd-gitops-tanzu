@@ -1,0 +1,6 @@
+resources:
+  - contour.yaml
+
+images:
+  - name: docker.io/envoyproxy/envoy
+    newName: harbor.navneet.pro/proxy-cache/envoyproxy/envoy
