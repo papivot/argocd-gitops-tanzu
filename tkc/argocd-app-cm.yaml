@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: argocd-app-configmap-workload-vsphere-tkg1
+  name: argocd-app-configmap
 data:
   argocd-tkc-addons.template.yaml: |
     apiVersion: argoproj.io/v1alpha1

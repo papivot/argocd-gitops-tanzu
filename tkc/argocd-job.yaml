@@ -3,10 +3,10 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: app-tkc-creation-
+  name: app-tkc-creation
   annotations:
     argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   template:
     spec:
@@ -25,7 +25,7 @@ spec:
       volumes:
       - name: configmap-volume
         configMap:
-          name: argocd-app-configmap-workload-vsphere-tkg1
+          name: argocd-app-configmap
       restartPolicy: Never
       serviceAccountName: demo1-argocd-argocd-application-controller
      # serviceAccountName: argocd-hook
