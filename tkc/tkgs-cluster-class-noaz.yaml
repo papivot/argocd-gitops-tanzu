@@ -19,7 +19,7 @@ spec:
       machineDeployments:
         - class: node-pool
           name: node-pool-1
-          replicas: 1
+          replicas: 2
     variables:
       - name: ntp
         value: time.google.com
