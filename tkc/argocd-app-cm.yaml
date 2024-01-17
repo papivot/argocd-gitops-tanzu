@@ -39,4 +39,20 @@ data:
         automated:
           prune: true
     ---
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: tkc-addons-${CLUSTER_NAME}-gatekeeper
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/papivot/argocd-gitops-tanzu.git"
+        path: gatekeeper
+        targetRevision: HEAD       
+      destination:
+        server: ${CLUSTER_IP}
+      syncPolicy:
+        automated:
+          prune: true  
+    ---
     # add more apps as needed
