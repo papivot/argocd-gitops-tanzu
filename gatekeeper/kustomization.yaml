@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - gatekeeper.yaml
+- mutation-psa-policy.yaml
 
 images:
 - name: openpolicyagent/gatekeeper
