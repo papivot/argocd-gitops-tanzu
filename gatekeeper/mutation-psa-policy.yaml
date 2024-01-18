@@ -1,0 +1,42 @@
+apiVersion: mutations.gatekeeper.sh/v1
+kind: AssignMetadata
+metadata:
+  name: fix-psa-value
+  argocd.argoproj.io/sync-wave: "5"
+spec:
+  location: metadata.labels."pod-security.kubernetes.io/enforce" 
+  match:
+    excludedNamespaces:
+    - kube-*
+    - vmware-*
+    - tanzu-*
+    - gatekeeper-system
+    - tkg-system
+    - istio-system
+    - velero
+    - wavefront
+    - kube-dns
+    - kube-node-lease
+    - kube-proxy
+    - kube-public
+    - kube-system
+    - tanzu-observability-saas
+    - tanzu-package-repo-global
+    - tanzu-system
+    - tanzu-system-registry
+    - tanzu-system-auth
+    - tanzu-system-ingress
+    - tanzu-system-logging
+    - vmware-system-auth
+    - vmware-system-cloud-provider
+    - vmware-system-csi
+    - vmware-system-tmc
+    kinds:
+    - apiGroups:
+      - ""
+      kinds:
+      - Namespace
+    scope: Cluster
+  parameters:
+    assign:
+      value: privileged
