@@ -15,11 +15,17 @@ spec:
     version: v1.26.5---vmware.2-fips.1-tkg.1
     controlPlane:
       replicas: 1
+      metadata:
+        annotations:
+          run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
     workers:
       machineDeployments:
         - class: node-pool
           name: node-pool-1
           replicas: 2
+          metadata:
+            annotations:
+              run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu          
     variables:
       - name: ntp
         value: time.google.com
