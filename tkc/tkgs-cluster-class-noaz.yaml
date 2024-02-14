@@ -22,7 +22,7 @@ spec:
       machineDeployments:
         - class: node-pool
           name: node-pool-1
-          replicas: 2
+          replicas: 1
           metadata:
             annotations:
               run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu          
