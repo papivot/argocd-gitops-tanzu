@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tkc-deploy
+  namespace: demo1
+spec:
+  project: default
+  destination:
+    namespace: demo1
+    server: https://kubernetes.default.svc
+  source:
+    path: tkc
+    repoURL: https://github.com/papivot/argocd-gitops-tanzu.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
