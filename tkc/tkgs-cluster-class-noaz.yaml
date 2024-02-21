@@ -11,8 +11,8 @@ spec:
       cidrBlocks: ["192.168.0.0/20"]
     serviceDomain: "cluster.local"
   topology:
-    class: custommhccluster
-#    class: tanzukubernetescluster
+#    class: custommhccluster
+    class: tanzukubernetescluster
     version: v1.26.5---vmware.2-fips.1-tkg.1
     controlPlane:
       replicas: 1
