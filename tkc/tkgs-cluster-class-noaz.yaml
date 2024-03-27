@@ -32,9 +32,9 @@ spec:
       - name: vmClass
         value: best-effort-medium
       - name: storageClass
-        value: vc01cl01-t0compute
+        value: tanzu
       - name: defaultStorageClass
-        value: vc01cl01-t0compute
+        value: tanzu
       - name: clusterEncryptionConfigYaml
         value: |
           apiVersion: apiserver.config.k8s.io/v1
@@ -55,21 +55,21 @@ spec:
             storage: "15Gi"
           mountPath: "/var/lib/containerd"
           name: containerd
-          storageClass: vc01cl01-t0compute
+          storageClass: tanzu
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/kubelet"
           name: kubelet
-          storageClass: vc01cl01-t0compute
+          storageClass: tanzu
       - name: controlPlaneVolumes
         value:
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/containerd"
           name: containerd
-          storageClass: vc01cl01-t0compute
+          storageClass: tanzu
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/kubelet"
           name: kubelet
-          storageClass: vc01cl01-t0compute
+          storageClass: tanzu
