@@ -2,7 +2,6 @@ apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
   name: ${ARGOCD_ENV_CLUSTER_NAME}
-  namespace: demo1
 spec:
   clusterNetwork:
     services:
