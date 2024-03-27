@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: workload-vsphere-tkg1
+  name: ${ARGOCD_ENV_CLUSTER_NAME}
   namespace: demo1
 spec:
   clusterNetwork:
@@ -12,7 +12,7 @@ spec:
     serviceDomain: "cluster.local"
   topology:
     class: tanzukubernetescluster
-    version: v1.26.5---vmware.2-fips.1-tkg.1
+    version: ${ARGOCD_ENV_TKR}
     controlPlane:
       replicas: 1
       metadata:
@@ -32,9 +32,9 @@ spec:
       - name: vmClass
         value: best-effort-medium
       - name: storageClass
-        value: tanzu
+        value: ${ARGOCD_ENV_STORAGE_CLASS}
       - name: defaultStorageClass
-        value: tanzu
+        value: ${ARGOCD_ENV_STORAGE_CLASS}
       - name: clusterEncryptionConfigYaml
         value: |
           apiVersion: apiserver.config.k8s.io/v1
@@ -55,21 +55,21 @@ spec:
             storage: "15Gi"
           mountPath: "/var/lib/containerd"
           name: containerd
-          storageClass: tanzu
+          storageClass: ${ARGOCD_ENV_STORAGE_CLASS}
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/kubelet"
           name: kubelet
-          storageClass: tanzu
+          storageClass: ${ARGOCD_ENV_STORAGE_CLASS}
       - name: controlPlaneVolumes
         value:
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/containerd"
           name: containerd
-          storageClass: tanzu
+          storageClass: ${ARGOCD_ENV_STORAGE_CLASS}
         - capacity:
             storage: "15Gi"
           mountPath: "/var/lib/kubelet"
           name: kubelet
-          storageClass: tanzu
+          storageClass: ${ARGOCD_ENV_STORAGE_CLASS}
