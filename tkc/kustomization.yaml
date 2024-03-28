@@ -10,4 +10,4 @@ namespace: demo1
 
 images:
 - name: whoami6443/argocd-hook
-  newName: whoami6443/argocd-hook
+  newName: harbor.navneet.pro/proxy-cache/whoami6443/argocd-hook
