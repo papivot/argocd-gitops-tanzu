@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: workload-vpshere-tkg1
+  name: workload-vsphere-tkg1
 spec:
   clusterNetwork:
     services:
