@@ -1,7 +1,7 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: workload-vsphere-tkg1
+  name: workload-vsphere-tkg2
 spec:
   clusterNetwork:
     services:
@@ -11,7 +11,7 @@ spec:
     serviceDomain: "cluster.local"
   topology:
     class: tanzukubernetescluster
-    version: v1.26.5---vmware.2-fips.1-tkg.1
+    version: v1.30.8---vmware.1-fips-vkr.1
     controlPlane:
       replicas: 1
       metadata:
